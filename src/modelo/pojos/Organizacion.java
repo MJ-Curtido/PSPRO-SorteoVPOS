@@ -11,9 +11,14 @@ public class Organizacion {
 	
 	public Organizacion(String nombre, String nif, TipoVecinal vecinal) {
 		super();
-		this.nombre = nombre;
-		this.nif = nif;
-		this.vecinal = vecinal;
+		if (nif == null || nombre == null || vecinal == null) {
+			throw new NullPointerException("Algún dato introducido es nulo.");
+		} else {
+			this.nombre = nombre;
+			this.nif = nif;
+			this.vecinal = vecinal;
+		}
+			
 	}
 
 	public String getNombre() {

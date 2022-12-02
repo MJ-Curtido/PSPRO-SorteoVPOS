@@ -3,17 +3,25 @@ package modelo.pojos;
 import java.util.Objects;
 
 import enums.TipoPersona;
+import exceptions.ExcepcionDNI;
 
 public class Persona {
 	private String nombre;
 	private String dni;
 	private TipoPersona tipoPersona;
 	
-	public Persona(String nombre, String dni, TipoPersona tipoPersona) {
+	public Persona(String nombre, String dni, TipoPersona tipoPersona) throws ExcepcionDNI {
 		super();
-		this.nombre = nombre;
-		this.dni = dni;
-		this.tipoPersona = tipoPersona;
+		if (dni == null || nombre == null || tipoPersona == null) {
+			throw new NullPointerException("Algún dato introducido es nulo.");
+		} else if (dni.equals("")) {
+			throw new ExcepcionDNI("El DNI no puede ser nulo ni estar vacío.");
+		}
+		else {
+			this.dni = dni;
+			this.nombre = nombre;
+			this.tipoPersona = tipoPersona;
+		}
 	}
 
 	public String getNombre() {

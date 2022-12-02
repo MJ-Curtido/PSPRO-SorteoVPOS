@@ -11,9 +11,13 @@ public class Vivienda {
 	
 	public Vivienda(Integer numRegistro, String direccion, TipoVivienda tipoVivienda) {
 		super();
-		this.numRegistro = numRegistro;
-		this.direccion = direccion;
-		this.tipoVivienda = tipoVivienda;
+		if (numRegistro == null || direccion == null || tipoVivienda == null) {
+			throw new NullPointerException("Algún dato introducido es nulo.");
+		} else {
+			this.numRegistro = numRegistro;
+			this.direccion = direccion;
+			this.tipoVivienda = tipoVivienda;
+		}
 	}
 
 	public Integer getNumRegistro() {
